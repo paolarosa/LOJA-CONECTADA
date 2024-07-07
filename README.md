@@ -1,5 +1,9 @@
 # Project Car Showcase
 
+![](https://img.shields.io/badge/ReactJS-blue.svg)
+![](https://img.shields.io/badge/Taillwindcss-blue.svg)
+![](https://img.shields.io/badge/TypeScript-blue.svg)
+
 O projeto eh um sistema para listagem de veiculos anunciados por uma loja. 
 
 O sistema possui 2 paginas:
