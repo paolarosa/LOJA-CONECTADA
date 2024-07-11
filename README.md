@@ -25,7 +25,7 @@ Abra uma branch com a estrutura de nome: feature/<seu-nome>, apos o termino abra
 
 ### Index
 
-Pagina inicial do sistema, ela carrega uma "X" quantidade de veiculos disponiveis na loja. A pagina possui 3 filtros para o usuario encontrar o veiculo desejado.
+Pagina inicial do sistema, ela carrega uma "X" quantidade de veiculos disponiveis na loja. A pagina possui 3 filtros para o usuario encontrar o veiculo desejado. ( ver a imagem page-inventory-index.png ) 
 
 Filtros:
 
@@ -45,7 +45,11 @@ Acoes do filtro:
 Ao alterar qualquer valor de um dos filtros, deve-ser disparar uma consulta a API para realizar a requisicao e retornar os dados conforme os filtros informados.
 
 
+ 
+
 ### Detail
+
+Pagina para mostrar os detalhes do anuncio. ( ver a imagem page-detail.png ) 
 
 
 ## Stack recomendada
@@ -80,3 +84,15 @@ URL Swagger: https://api-site.lojaconectada.com.br/v2/docs/
 Token: sera enviado por email
 
 Autenticacao: Authorization: Token <Token>
+
+### Endpoints
+
+Pegar dados da loja: /dealer/<dealer_id>
+
+Amostra do estoque: /dealer/<dealer_id>/inventory/featured
+
+Marcas: /dealer/<dealer_id>/inventory/make/1  ( valor 1 eh o codigo para categoria carros )
+
+Modelos: dealer/<dealer_id>/inventory/model/<make_id>
+
+Detail: /inventory/<ad_id>
