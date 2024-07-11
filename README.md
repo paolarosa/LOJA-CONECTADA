@@ -44,7 +44,7 @@ Acoes do filtro:
 
 Ao alterar qualquer valor de um dos filtros, deve-ser disparar uma consulta a API para realizar a requisicao e retornar os dados conforme os filtros informados.
 
-
+Quando clicar no card do veiculo abre a pagina de detalhe.
  
 
 ### Detail
