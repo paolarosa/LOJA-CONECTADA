@@ -4,7 +4,7 @@ import backgroundColor from "../../assets/new.jpg"
 export const DashboardContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background: url(${backgroundColor}) no-repeat center center fixed;
+   /*background: url(${backgroundColor}) no-repeat center center fixed;*/
   background-size: cover;
   padding: 10px 20px 0 20px;
   position: relative;

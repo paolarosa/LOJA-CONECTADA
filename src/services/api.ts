@@ -9,13 +9,13 @@ export const api = axios.create({
   },
 })
 
-export const getVehicles = async () => {
-  try {
-    const response = await api.get('/vehicles');
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching vehicles:", error);
-    throw error;
-  }
-};
+// export const getVehicles = async () => {
+//   try {
+//     const response = await api.get('/vehicles');
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error fetching vehicles:", error);
+//     throw error;
+//   }
+// };
 export default api;

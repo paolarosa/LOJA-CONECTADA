@@ -1,18 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { Login } from "../pages/Login";
-import { Register } from "../pages/Register";
-import { ProtectecRoutes } from "./ProtectedRoutes";
 import Dashboard from "../pages/Dashboard";
+import DetailPage from "../pages/DetailPage";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/register" element={<Register />} />
-      <Route path="/" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      {/* <Route element={<ProtectecRoutes />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Route> */}
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/car/:id" element={<DetailPage />} />
     </Routes>
   );
 };
