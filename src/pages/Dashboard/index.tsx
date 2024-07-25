@@ -13,7 +13,7 @@ export const Dashboard = () => {
     const fetchCars = async () => {
       try {
         const response = await api.get("/dealer/10/inventory/featured");
-        console.log("Dados PHOTOS:", response.data[0].photos[0].photo);
+        console.log("Dados:", response.data[0].model);
         setCars(response.data);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
@@ -64,8 +64,9 @@ export const Dashboard = () => {
           <Card
             key={car.ad_id}
             id={car.ad_id}
-            title={car.title}
-            description={car.description}
+            model={car.model[1]}
+            year={car.model_year}
+            price={car.price}
             images={car.photos.map(photo => photo.photo)}
           />
         ))}

@@ -26,10 +26,12 @@ const DetailPage: React.FC = () => {
 
   return (
     <div>
-      <h1>{car.title}</h1>
-      <img src={car.photos[0]?.url || 'placeholder.jpg'} alt={car.title} />
-      <p>{car.description}</p>
-      {/* Adicione mais detalhes conforme necessário */}
+      <h1>{car.model}</h1>
+      <h3>{car.price}</h3>
+      <p>{car.model_year}</p>
+      {car.fuel && <p>{car.fuel}</p>}
+      <img src={car.photos[0]?.photo || 'placeholder.jpg'} alt={car.model} />
+    <p>{car.description}</p>
     </div>
   );
 };

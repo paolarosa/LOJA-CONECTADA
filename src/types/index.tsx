@@ -1,19 +1,25 @@
 
 export interface Car {
   ad_id: number;
-  title: string;
-  description: string;
-photos: {
+  model: string;
+  model_year: number;
+  price: number;
+  fuel?: string;
+  description?: string;
+  photos: {
     photo: string;
     thumb: string;
     order: number;
-  }[];
+    }[];
 }
 
 export interface CardProp {
   id: number;
-  title: string;
-  description: string;
+  model: string;
+  year: number;
+  price: number;
+  fuel?: string;
+  description?: string;
   images: string[]
 }
 

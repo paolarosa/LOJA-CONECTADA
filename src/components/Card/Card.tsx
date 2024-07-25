@@ -4,25 +4,43 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 
-
-const Card: React.FC<CardProp> = ({ id, title, description, images }) => {
-  const [currentImage, setCurrentImage] = useState(images[0]);
+const Card: React.FC<CardProp> = ({ id, model, year, price, images }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    return () => {
+      // Limpa o intervalo ao desmontar o componente para evitar erros
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
+
   const handleMouseEnter = () => {
-    // Troca de imagem ao passar o mouse
-    if (images.length > 1) {
-      // Alterna entre as imagens disponíveis
-      setCurrentImage(images[1]); // Exemplo: alterna para a segunda imagem
-    }
+    // Inicia um intervalo para trocar de imagem a cada 1000ms (1 segundo)
+    const id = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 1000);
+    setIntervalId(id);
   };
 
   const handleMouseLeave = () => {
-    setCurrentImage(images[0]);
+    // Limpa o intervalo para parar a troca de imagens
+    if (intervalId !== null) {
+      clearInterval(intervalId);
+    }
   };
 
   const handleClick = () => {
     navigate(`/car/${id}`);
+  };
+
+   const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
   };
 
   return (
@@ -32,9 +50,10 @@ const Card: React.FC<CardProp> = ({ id, title, description, images }) => {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <img src={currentImage} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <img src={images[currentImageIndex]} alt={model} />
+      <h3>{model}</h3>
+      <h3>{year}</h3>
+      <p>{formatPrice(price)}</p>
     </div>
   );
 };
