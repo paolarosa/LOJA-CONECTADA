@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -24,8 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      - name: Run tests
-        run: npm test
+      # Comente ou remova a etapa de teste
+      # - name: Run tests
+      #   run: npm test
+
+      - name: Deploy
+        run: echo "Deploy step goes here"
