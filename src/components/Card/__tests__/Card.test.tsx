@@ -1,25 +1,23 @@
 import { render, screen } from "@testing-library/react";
 import Card from "../Card";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 const mockProps = {
   id: 1,
   model: "Model X",
-  make: "Tesla",
+  make: "Brand X",
   year: 2021,
   price: 100000,
-  images: ["https://via.placeholder.com/150"],
+  images: ['"https://via.placeholder.com/150"'],
 };
 
-test("renders Card component with correct data", () => {
-  render(
-    <BrowserRouter>
-      <Card {...mockProps} />
-    </BrowserRouter>
-  );
-
-  expect(screen.getByText("Model X")).toBeInTheDocument();
-  expect(screen.getByText("Tesla")).toBeInTheDocument();
-  expect(screen.getByText("2021")).toBeInTheDocument();
-  expect(screen.getByText("R$ 100.000,00")).toBeInTheDocument();
+describe("Card Component", () => {
+  test("renders Card component with correct data", () => {
+    render(<Card {...mockProps} />);
+    screen.debug();
+    expect(screen.getByText(/Model S/i)).toBeInTheDocument();
+    expect(screen.getByText(/Brand/i)).toBeInTheDocument();
+    expect(screen.getByText(/2021/i)).toBeInTheDocument();
+    expect(screen.getByText(/\$100,999/i)).toBeInTheDocument();
+  });
 });

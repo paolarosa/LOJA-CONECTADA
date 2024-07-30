@@ -1,17 +1,13 @@
-import { AuthProvider } from "./providers/AuthProvider"
-import { RoutesMain } from "./routes"
-import GlobalStyle from "./styles/GlobalStyle"
+import { RoutesMain } from "./routes";
+import GlobalStyle from "./styles/GlobalStyle";
 
 function App() {
-
   return (
     <>
-    <GlobalStyle/>
-    <AuthProvider>
-    <RoutesMain/>
-    </AuthProvider> 
+      <GlobalStyle />
+      <RoutesMain />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
