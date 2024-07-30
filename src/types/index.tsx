@@ -1,7 +1,13 @@
-
 export interface Car {
   ad_id: number;
-  model: string;
+  model: {
+    id: number;
+    name: string;
+  };
+  manufacturer: {
+    id: number;
+    name: string;
+  };
   model_year: number;
   price: number;
   fuel?: string;
@@ -10,17 +16,18 @@ export interface Car {
     photo: string;
     thumb: string;
     order: number;
-    }[];
+  }[];
 }
 
 export interface CardProp {
   id: number;
   model: string;
+  make: string;
   year: number;
   price: number;
   fuel?: string;
   description?: string;
-  images: string[]
+  images: string[];
 }
 
 export interface Phone {

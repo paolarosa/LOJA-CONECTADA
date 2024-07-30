@@ -1,12 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
-import { Car } from '../../types';
-
+import { Car } from "../../types";
+import {
+  CarDescription,
+  CarImageContainer,
+  CarImage,
+  CarInfo,
+  CarModel,
+  DetailContainer,
+  DetailWrapper,
+} from "./styles";
 
 const DetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [car, setCar] = useState<Car | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [intervalId, setIntervalId] = useState<ReturnType<
+    typeof setInterval
+  > | null>(null);
 
   useEffect(() => {
     const fetchCarDetails = async () => {
@@ -20,19 +32,66 @@ const DetailPage: React.FC = () => {
     };
 
     fetchCarDetails();
-  }, [id]);
+
+    return () => {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [id, intervalId]);
+
+  const handleMouseEnter = () => {
+    const id = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        car && prevIndex === car.photos.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 1000);
+    setIntervalId(id);
+  };
+
+  const handleMouseLeave = () => {
+    if (intervalId !== null) {
+      clearInterval(intervalId);
+    }
+  };
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(price);
+  };
 
   if (!car) return <p>Carregando...</p>;
 
   return (
-    <div>
-      <h1>{car.model}</h1>
-      <h3>{car.price}</h3>
-      <p>{car.model_year}</p>
-      {car.fuel && <p>{car.fuel}</p>}
-      <img src={car.photos[0]?.photo || 'placeholder.jpg'} alt={car.model} />
-    <p>{car.description}</p>
-    </div>
+    <DetailWrapper>
+      <DetailContainer>
+        <CarImageContainer
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <CarImage
+            src={car.photos[currentImageIndex]?.photo || "placeholder.jpg"}
+            alt={car.model.name || "Imagem do carro"}
+          />
+        </CarImageContainer>
+        <CarModel>{car.model.name}</CarModel>
+        <CarInfo>
+          <strong>Marca:</strong> {car.manufacturer.name}
+        </CarInfo>
+        <CarInfo>
+          <strong>Ano:</strong> {car.model_year}
+        </CarInfo>
+        <CarInfo>
+          <strong>Preço:</strong> {formatPrice(car.price)}
+        </CarInfo>
+        <CarDescription>
+          <strong>Descrição:</strong>{" "}
+          {car.description || "Descrição não disponível"}
+        </CarDescription>
+      </DetailContainer>
+    </DetailWrapper>
   );
 };
 

@@ -1,3 +1,28 @@
+// {
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//     "module": "ESNext",
+//     "skipLibCheck": true,
+
+//     /* Bundler mode */
+//     "moduleResolution": "bundler",
+//     "allowImportingTsExtensions": true,
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "noEmit": true,
+//     "jsx": "react-jsx",
+//     "types": ["jest"],
+
+//     /* Linting */
+//     "strict": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "noFallthroughCasesInSwitch": true
+//   },
+//   "include": ["src"],
+//   "references": [{ "path": "./tsconfig.node.json" }]
+// }
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -6,12 +31,13 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node", // Use "node" para garantir que o Jest funcione corretamente
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["jest"],
 
     /* Linting */
     "strict": true,
