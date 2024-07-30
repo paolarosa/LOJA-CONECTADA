@@ -1,11 +1,9 @@
 // DashboardContainer.tsx
 import styled from "styled-components";
-import backgroundColor from "../../assets/new.jpg";
 
 export const DashboardContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  /*background: url(${backgroundColor}) no-repeat center center fixed;*/
   background-size: cover;
   padding: 20px;
   position: relative;
