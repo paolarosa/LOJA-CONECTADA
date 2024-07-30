@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import backgroundColor from "../../assets/fundo-colorido-abstrato_78899-3842.avif"
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');

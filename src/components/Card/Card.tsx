@@ -1,7 +1,7 @@
 import { CardStyled } from "./styles";
 import { CardProp } from "../../types";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

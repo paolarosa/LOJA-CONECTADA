@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import Card from "../Card";
-import { MemoryRouter } from "react-router-dom";
 
 const mockProps = {
   id: 1,
