@@ -11,8 +11,14 @@ export const DetailWrapper = styled.div`
 
 export const DetailContainer = styled.div`
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    5px 3px 10px white, /* Sombra da primeira página */
+    5px 2px 0px 1px black, /* Sombra da borda da primeira página */
+    8px 5px 0px white, /* Sombra da segunda página */
+    10px 10px 20px 0px black, /* Sombra da borda da segunda página */
+    12px 15px 0px white, /* Sombra da terceira página */
+    15px 20px 0px black, /* Sombra da borda da terceira página */
+    17px 22px 0px white;
   padding: 20px;
   max-width: 600px;
   width: 100%;
@@ -20,6 +26,7 @@ export const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Garante alinhamento à esquerda */
+  position: relative;
 `;
 
 export const CarImageContainer = styled.div`
@@ -31,7 +38,7 @@ export const CarImageContainer = styled.div`
   overflow: hidden;
   background-color: #e0e0e0;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 `;
 
 export const CarImage = styled.img`
@@ -41,18 +48,30 @@ export const CarImage = styled.img`
   border-radius: 10px;
 `;
 
+export const PinIcon = styled.img`
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  width: 60px; 
+  height: auto;
+  z-index: 10; 
+  transform: rotate(340deg);
+`;
+
 export const CarModel = styled.h1`
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: left;
   width: 100%;
 `;
 
 export const CarInfo = styled.p`
-  margin: 10px 0;
+  margin: 5px 0;
   font-size: 16px;
   text-align: left;
   width: 100%;
+  width: 100%;
+  box-shadow: 0px 2px 0px 0px black;
 `;
 
 export const CarDescription = styled.p`

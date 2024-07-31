@@ -3,15 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
    :root {
-    --color-blue-900: #0d47a1;
-    --color-blue-800: #1565c0;
-    --color-blue-700: #1976d2;
-    --color-blue-600: #1e88e5;
-    --color-blue-500: #2196f3;
-    --color-blue-400: #42a5f5;
-    --color-blue-300: #64b5f6;
-    --color-blue-200: #90caf9;
-    --color-blue-100: #bbdefb;
     --color-gray-900: #212121;
     --color-gray-850: #121214;
     --color-gray-800: #343b41;
@@ -23,14 +14,8 @@ export default createGlobalStyle`
     --color-gray-200: #eeeeee;
     --color-gray-100: #f5f5f5;
 
-    --color-purple
-
     font-size: 60%;   
   }
-
-  /* font-size: 16px;
-  1rem = 10px
-  */
 
   @media (min-width: 700px) {
     :root {

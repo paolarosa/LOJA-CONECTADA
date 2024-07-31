@@ -1,18 +1,19 @@
-// DashboardContainer.tsx
+/* DashboardContainer.tsx */
 import styled from "styled-components";
 
 export const DashboardContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-size: cover;
-  padding: 20px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: black;
 
   .filters {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    margin-bottom: 20px;
 
     select, input {
       padding: 10px;
@@ -25,21 +26,30 @@ export const DashboardContainer = styled.div`
       width: 100px;
     }
   }
-
+.header{
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  padding-top: 10px;
+}
   .contactTitle {
     display: flex;
     align-items: center; 
     justify-content: space-between; 
-    margin-top: 20px;
     color: #333;
     font-weight: 500;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    width: 1310px;
+    height: 100%;
 
-    img {
-      max-height: 100px;
+    .logo{
+      max-height: 60px;
       object-fit: cover;
       margin-right: 20px;
     }
@@ -53,8 +63,20 @@ export const DashboardContainer = styled.div`
       p {
         margin: 5px 0;
         font-size: 16px;
+        display: flex;
+        align-items: center; /* Alinha verticalmente os itens */
       }
     }
+    .number{
+      display:flex;
+      align-items: center;
+      font-size: 16px;
+    }
+  .number img{
+    width:20px;
+    height:20px;
+    margin-right:8px
+  }
   }
 
   .title {
@@ -76,11 +98,12 @@ export const DashboardContainer = styled.div`
     color: #333;
     margin: 30px 0 20px 0;
   }
-  h3{
+  
+  h3 {
     width: 100%;
     box-shadow: 0px 2px 0px 0px black;
-
   }
+  
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -94,15 +117,13 @@ export const DashboardContainer = styled.div`
     .divMain {
       width: 100%;
       max-width: 1440px;
-      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     ul {
       justify-content: center;
-    }
-
-    li:hover {
-      background-color: #ffdeeb;
     }
   }
 `;

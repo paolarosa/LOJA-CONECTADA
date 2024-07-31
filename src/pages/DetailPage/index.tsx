@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { Car } from "../../types";
+import pin from "../../assets/redPin.png";
 import {
   CarDescription,
   CarImageContainer,
@@ -10,6 +11,7 @@ import {
   CarModel,
   DetailContainer,
   DetailWrapper,
+  PinIcon, // Importando o novo componente
 } from "./styles";
 
 const DetailPage: React.FC = () => {
@@ -67,6 +69,7 @@ const DetailPage: React.FC = () => {
   return (
     <DetailWrapper>
       <DetailContainer>
+        <PinIcon src={pin} alt="Pin" />
         <CarImageContainer
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

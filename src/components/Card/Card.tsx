@@ -1,7 +1,8 @@
-import { CardStyled } from "./styles";
+//import { CardStyled } from "./styles";
 import { CardProp } from "../../types";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./card.tailwind.css";
 
 const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -47,7 +48,7 @@ const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
     }).format(price);
   };
 
-  return (
+  /* return (
     <CardStyled>
       <div
         className="img-content"
@@ -64,6 +65,24 @@ const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
         <p>{formatPrice(price)}</p>
       </div>
     </CardStyled>
+  );*/
+  return (
+    <li className="card">
+      <div
+        className="img-content"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+      >
+        <img src={images[currentImageIndex]} alt={model} />
+      </div>
+      <div className="card-content">
+        <h3>{model}</h3>
+        <h3>{make}</h3>
+        <h3>{year}</h3>
+        <p>{formatPrice(price)}</p>
+      </div>
+    </li>
   );
 };
 

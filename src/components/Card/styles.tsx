@@ -9,13 +9,13 @@ export const CardStyled = styled.li`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   align-items: center;
   margin: 10px 0 0 15px;
   overflow: hidden;
   -webkit-box-shadow: 3px 2px 0px 5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 3px 2px 0px 5px rgba(0, 0, 0, 0.75);
   box-shadow: 3px 2px 0px 5px rgba(0, 0, 0, 0.75);
+
 
   .img-content {
     height: 50%;
@@ -80,6 +80,6 @@ export const CardStyled = styled.li`
     flex-wrap: wrap;
     height: 100%;
     margin-top: 20px;
-    justify-content: center; */
+    justify-content: center;
   }
 `;

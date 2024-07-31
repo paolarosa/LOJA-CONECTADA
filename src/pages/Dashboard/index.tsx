@@ -3,6 +3,8 @@ import { api } from "../../services/api";
 import { DashboardContainer } from "./styles";
 import Card from "../../components/Card/Card";
 import { Car, Dealer } from "../../types";
+import whatsIcon from "../../assets/whatsapp.png";
+import phoneIcon from "../../assets/phone.png";
 
 export const Dashboard = () => {
   const [cars, setCars] = useState<Car[]>([]);
@@ -95,82 +97,90 @@ export const Dashboard = () => {
 
   return (
     <DashboardContainer>
-      <div className="filters">
-        <select
-          value={selectedBrand}
-          onChange={(e) => {
-            setSelectedBrand(e.target.value);
-            setSelectedModel("");
-            // console.log("Marca selecionada no select:", e.target.value); // Log da marca selecionada no select
-          }}
-        >
-          <option value="">Selecione a Marca</option>
-          {brands.map((brand) => (
-            <option key={brand.id} value={brand.id}>
-              {brand.name}
-            </option>
-          ))}
-        </select>
-        <select
-          value={selectedModel}
-          onChange={(e) => {
-            setSelectedModel(e.target.value);
-            //console.log("Modelo selecionado no select:", e.target.value);
-          }}
-          disabled={!selectedBrand} // Desabilitar se nenhuma marca for selecionada
-        >
-          <option value="">Selecione o Modelo</option>
-          {models.map((model) => (
-            <option key={model.id} value={model.id}>
-              {model.name}
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          value={yearFrom}
-          onChange={(e) => {
-            const value = e.target.value;
-            if (/^\d{0,4}$/.test(value)) {
-              setYearFrom(value);
-              console.log("Ano de (yearFrom) selecionado:", value); // Log do ano de
-            }
-          }}
-          maxLength={4}
-          placeholder="Ano de"
-          max="9999"
-        />
-        <input
-          type="number"
-          value={yearTo}
-          onChange={(e) => {
-            const value = e.target.value;
-            if (/^\d{0,4}$/.test(value)) {
-              setYearTo(value);
-              console.log("Ano até (yearTo) selecionado:", value); // Log do ano até
-            }
-          }}
-          maxLength={4}
-          placeholder="Ano até"
-          max="9999"
-        />
-      </div>
       <div className="divMain">
-        {dealer && (
-          <div className="contactTitle">
-            <img src={dealer.logo} alt="Logo" />
-
-            <div>
-              {dealer.phones.map((phone, index) => (
-                <p key={index}>
-                  Telefone: ({phone.ddd}) {phone.phone}{" "}
-                  {phone.is_whatsapp && <span>(WhatsApp)</span>}
-                </p>
-              ))}
+        <div className="header">
+          {dealer && (
+            <div className="contactTitle">
+              <img className="logo" src={dealer.logo} alt="Logo" />
+              <div className="filters">
+                <select
+                  value={selectedBrand}
+                  onChange={(e) => {
+                    setSelectedBrand(e.target.value);
+                    setSelectedModel("");
+                    // console.log("Marca selecionada no select:", e.target.value); // Log da marca selecionada no select
+                  }}
+                >
+                  <option value="">Selecione a Marca</option>
+                  {brands.map((brand) => (
+                    <option key={brand.id} value={brand.id}>
+                      {brand.name}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={selectedModel}
+                  onChange={(e) => {
+                    setSelectedModel(e.target.value);
+                    //console.log("Modelo selecionado no select:", e.target.value);
+                  }}
+                  disabled={!selectedBrand} // Desabilitar se nenhuma marca for selecionada
+                >
+                  <option value="">Selecione o Modelo</option>
+                  {models.map((model) => (
+                    <option key={model.id} value={model.id}>
+                      {model.name}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  type="number"
+                  value={yearFrom}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^\d{0,4}$/.test(value)) {
+                      setYearFrom(value);
+                      console.log("Ano de (yearFrom) selecionado:", value); // Log do ano de
+                    }
+                  }}
+                  maxLength={4}
+                  placeholder="Ano de"
+                  max="9999"
+                />
+                <input
+                  type="number"
+                  value={yearTo}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^\d{0,4}$/.test(value)) {
+                      setYearTo(value);
+                      console.log("Ano até (yearTo) selecionado:", value); // Log do ano até
+                    }
+                  }}
+                  maxLength={4}
+                  placeholder="Ano até"
+                  max="9999"
+                />
+              </div>
+              <div>
+                {dealer.phones.map((phone, index) => (
+                  <div className="number" key={index}>
+                    {phone.is_whatsapp ? (
+                      <img
+                        src={whatsIcon}
+                        alt="WhatsApp"
+                        className="whatsapp-icon"
+                      />
+                    ) : (
+                      <img src={phoneIcon} alt="Phone" className="phone-icon" />
+                    )}
+                    ({phone.ddd}) {phone.phone}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
-        <h2 className="title">Seus Contatos:</h2>
+          )}
+        </div>
         <ul>
           {filteredCars.map((car) => (
             <Card
