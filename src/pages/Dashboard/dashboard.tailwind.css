@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dashboard-container {
+  @apply w-screen h-screen bg-black flex justify-center relative mt-8;
+}
+
+.header {
+  @apply w-screen bg-white flex justify-center items-center h-20 pt-2 mb-[50px];
+}
+
+.contactTitle {
+  @apply flex items-center justify-between text-gray-800 h-[100%] font-medium bg-white p-4 rounded-md mb-6 w-full max-w-screen-xl;
+
+  .logo {
+    @apply max-h-14 object-cover mr-4;
+  }
+
+  .filters {
+    @apply flex gap-4;
+
+    select,
+    input {
+      @apply p-2 border-2 border-gray-300 rounded-lg text-base;
+    }
+
+    input {
+      @apply w-36;
+    }
+  }
+
+  .number {
+    @apply flex items-center text-base;
+
+    img {
+      @apply w-5 h-5 mr-2;
+    }
+  }
+}
+
+.title {
+  @apply w-full max-w-xs p-2 h-10 bg-white text-gray-800 font-medium text-center rounded-lg shadow-md my-8;
+}
+
+h2 {
+  @apply text-2xl text-gray-800 my-8;
+}
+
+h3 {
+  @apply w-full shadow-[0_2px_0_black];
+}
+
+ul {
+  @apply flex flex-wrap gap-5 p-4 list-none w-full;
+}
+
+@media (min-width: 700px) {
+  .divMain {
+    @apply w-full max-w-screen-xl flex flex-col items-center;
+  }
+
+  ul {
+    @apply justify-center;
+  }
+}
