@@ -1,58 +1,66 @@
-/*@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .dashboard-container {
-  @apply w-screen h-screen bg-gray-100 p-5 relative flex flex-col items-center;
+  @apply w-screen h-screen bg-black flex justify-center relative mt-8;
 }
 
-
-.filters {
-  @apply flex flex-wrap gap-4 mb-5 p-4 bg-white shadow-md rounded-lg max-w-4xl w-full justify-center items-center;
+.header {
+  @apply w-screen bg-white flex justify-center items-center h-20 pt-2 mb-[50px];
 }
-
 
 .contactTitle {
-  @apply flex items-center gap-4 mb-5 p-4 bg-white shadow-md rounded-lg max-w-4xl w-full justify-between;
+  @apply flex items-center justify-between text-gray-800 h-[100%] font-medium bg-white p-4 rounded-md mb-6 w-full max-w-screen-xl;
 
-  img {
-    @apply max-h-16 object-cover;
+  .logo {
+    @apply max-h-14 object-cover mr-4;
   }
 
-  div {
-    p {
-      @apply text-lg text-gray-700;
+  .filters {
+    @apply flex gap-4;
+
+    select,
+    input {
+      @apply p-2 border-2 border-gray-300 rounded-lg text-base;
     }
 
-    span {
-      @apply text-green-500 font-semibold;
+    input {
+      @apply w-36;
+    }
+  }
+
+  .number {
+    @apply flex items-center text-base;
+
+    img {
+      @apply w-5 h-5 mr-2;
     }
   }
 }
 
 .title {
-  @apply w-full max-w-4xl py-2 h-10 bg-white text-gray-800 font-medium text-center rounded-md shadow-md my-7;
+  @apply w-full max-w-xs p-2 h-10 bg-white text-gray-800 font-medium text-center rounded-lg shadow-md my-8;
+}
+
+h2 {
+  @apply text-2xl text-gray-800 my-8;
+}
+
+h3 {
+  @apply w-full shadow-[0_2px_0_black];
 }
 
 ul {
-  @apply flex flex-wrap gap-5 py-4 list-none justify-center;
-}
-
-li {
-  @apply cursor-pointer;
-}
-
-li:hover {
-  @apply bg-gray-200;
+  @apply flex flex-wrap gap-5 p-4 list-none w-full;
 }
 
 @media (min-width: 700px) {
-  .dashboard-container {
-    @apply p-10;
+  .divMain {
+    @apply w-full max-w-screen-xl flex flex-col items-center;
   }
 
-  .filters {
-    @apply flex-row gap-6;
+  ul {
+    @apply justify-center;
   }
 }
-*/

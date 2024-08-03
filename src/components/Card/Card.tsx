@@ -1,4 +1,3 @@
-//import { CardStyled } from "./styles";
 import { CardProp } from "../../types";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -13,7 +12,6 @@ const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
 
   useEffect(() => {
     return () => {
-      // Limpa o intervalo ao desmontar o componente para evitar erros
       if (intervalId !== null) {
         clearInterval(intervalId);
       }
@@ -21,7 +19,6 @@ const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
   }, [intervalId]);
 
   const handleMouseEnter = () => {
-    // Inicia um intervalo para trocar de imagem a cada 1000ms (1 segundo)
     const id = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -31,7 +28,6 @@ const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
   };
 
   const handleMouseLeave = () => {
-    // Limpa o intervalo para parar a troca de imagens
     if (intervalId !== null) {
       clearInterval(intervalId);
     }
@@ -48,24 +44,6 @@ const Card: React.FC<CardProp> = ({ id, model, make, year, price, images }) => {
     }).format(price);
   };
 
-  /* return (
-    <CardStyled>
-      <div
-        className="img-content"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleClick}
-      >
-        <img src={images[currentImageIndex]} alt={model} />
-      </div>
-      <div className="card-content">
-        <h3>{model}</h3>
-        <h3>{make}</h3>
-        <h3>{year}</h3>
-        <p>{formatPrice(price)}</p>
-      </div>
-    </CardStyled>
-  );*/
   return (
     <li className="card">
       <div

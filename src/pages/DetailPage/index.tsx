@@ -3,16 +3,7 @@ import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { Car } from "../../types";
 import pin from "../../assets/redPin.png";
-import {
-  CarDescription,
-  CarImageContainer,
-  CarImage,
-  CarInfo,
-  CarModel,
-  DetailContainer,
-  DetailWrapper,
-  PinIcon, // Importando o novo componente
-} from "./styles";
+import "./detailpage.tailwind.css";
 
 const DetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,7 +17,6 @@ const DetailPage: React.FC = () => {
     const fetchCarDetails = async () => {
       try {
         const response = await api.get(`/inventory/${id}`);
-        console.log("Dados do carro:", response.data);
         setCar(response.data);
       } catch (error) {
         console.error("Erro ao buscar detalhes do carro:", error);
@@ -67,34 +57,36 @@ const DetailPage: React.FC = () => {
   if (!car) return <p>Carregando...</p>;
 
   return (
-    <DetailWrapper>
-      <DetailContainer>
-        <PinIcon src={pin} alt="Pin" />
-        <CarImageContainer
+    <div className="detail-wrapper">
+      <div className="detail-container">
+        <img src={pin} alt="Pin" className="pin-icon" />
+        <div
+          className="car-image-container"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <CarImage
+          <img
             src={car.photos[currentImageIndex]?.photo || "placeholder.jpg"}
             alt={car.model.name || "Imagem do carro"}
+            className="car-image"
           />
-        </CarImageContainer>
-        <CarModel>{car.model.name}</CarModel>
-        <CarInfo>
+        </div>
+        <h1 className="car-model">{car.model.name}</h1>
+        <p className="car-info">
           <strong>Marca:</strong> {car.manufacturer.name}
-        </CarInfo>
-        <CarInfo>
+        </p>
+        <p className="car-info">
           <strong>Ano:</strong> {car.model_year}
-        </CarInfo>
-        <CarInfo>
+        </p>
+        <p className="car-info">
           <strong>Preço:</strong> {formatPrice(car.price)}
-        </CarInfo>
-        <CarDescription>
+        </p>
+        <p className="car-description">
           <strong>Descrição:</strong>{" "}
           {car.description || "Descrição não disponível"}
-        </CarDescription>
-      </DetailContainer>
-    </DetailWrapper>
+        </p>
+      </div>
+    </div>
   );
 };
 

@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .detail-wrapper {
+    @apply bg-black flex justify-center items-center h-screen p-5;
+  }
+
+  .detail-container {
+    @apply bg-white p-5 max-w-4xl w-full text-left flex flex-col items-start relative;
+    max-width: 500px;
+    box-shadow: 5px 3px 10px white, 5px 2px 0px 1px black, 8px 5px 0px white,
+      10px 10px 20px 0px black, 12px 15px 0px white, 15px 20px 0px black,
+      17px 22px 0px white;
+  }
+
+  .car-image-container {
+    @apply w-full h-[300px] flex items-center justify-center overflow-hidden bg-gray-200 rounded-lg my-5;
+  }
+
+  .car-image {
+    @apply w-full h-full object-cover rounded-lg;
+  }
+
+  .pin-icon {
+    @apply absolute top-1 left-6 w-16 h-auto z-10 rotate-[-20deg];
+  }
+
+  .car-model {
+    @apply font-bold mb-2 w-full text-left;
+  }
+
+  .car-info {
+    @apply my-1 text-base w-full text-left shadow-[0_2px_0_black];
+  }
+
+  .car-description {
+    @apply mt-2 text-base text-gray-600 w-full text-left;
+  }
+}
